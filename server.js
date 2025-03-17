@@ -14,4 +14,8 @@ app.get('/', (req, res) => {
     res.send('Hello from Vercel');
 });
 
+app.get('/homepic', (req, res) => {
+    res.send('Hello from Vercel/homepic')
+})
+
 app.listen(3000, () => console.log('Server running on port 3000'));
