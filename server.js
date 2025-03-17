@@ -1,22 +1,19 @@
-const express = require('express')
-const cors = require('cors')
+const express = require('express');
+const cors = require('cors');
 
-const app = express()
+const app = express();
 
-app.use(cors())
-
+// Middleware
 app.use(cors({
-    origin: "https://yellowstriker.netlify.app"
-}))
+    origin: "https://yellowstriker.netlify.app" // Ganti dengan URL frontend Netlify
+}));
+app.use(express.json()); // Memastikan request body bisa dibaca dalam format JSON
+app.use(express.urlencoded({ extended: true })); // Untuk menangani request dari form
 
-
+// Endpoint GET
 app.get('/', (req, res) => {
     res.send('Hello from Vercel');
 });
-
-app.get('/homepic', (req, res) => {
-    res.send('Hello from Vercel/homepic')
-})
 
 // Endpoint POST
 app.post('/api/data', (req, res) => {
@@ -32,4 +29,4 @@ app.post('/api/data', (req, res) => {
     });
 });
 
-app.listen(3000, () => console.log('Server running on port 3000'));
+module.exports = app;
